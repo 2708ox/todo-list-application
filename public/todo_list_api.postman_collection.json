@@ -1,0 +1,119 @@
+{
+  "info": {
+    "_postman_id": "7f3e82d1-9452-47df-bc63-8a03fbe147b2",
+    "name": "Todo List RESTful API (Next.js + PostgreSQL)",
+    "description": "API collection for testing Todo List CRUD endpoints with PostgreSQL storage",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Health & DB Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        },
+        "description": "Check API health and PostgreSQL connection status"
+      },
+      "response": []
+    },
+    {
+      "name": "2. Get All Todos (Read)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/todos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "todos"]
+        },
+        "description": "Retrieve all todo items sorted by creation date"
+      },
+      "response": []
+    },
+    {
+      "name": "3. Create Todo (Create)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"ทำแบบทดสอบ API ด้วย Postman\",\n  \"description\": \"ทดสอบสร้าง, ดึงข้อมูล, อัปเดต และลบ Todo\",\n  \"priority\": \"high\",\n  \"category\": \"Testing\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/todos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "todos"]
+        },
+        "description": "Create a new todo item in the database"
+      },
+      "response": []
+    },
+    {
+      "name": "4. Get Single Todo by ID (Read One)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/todos/todo-1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "todos", "todo-1"]
+        },
+        "description": "Fetch a single todo item by its unique ID"
+      },
+      "response": []
+    },
+    {
+      "name": "5. Update Todo (Update / Toggle Status)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"ทำแบบทดสอบ API ด้วย Postman (สำเร็จแล้ว)\",\n  \"completed\": true,\n  \"priority\": \"high\",\n  \"category\": \"Testing\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/todos/todo-1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "todos", "todo-1"]
+        },
+        "description": "Update todo details or toggle completion status"
+      },
+      "response": []
+    },
+    {
+      "name": "6. Delete Todo (Delete)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/todos/todo-4",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "todos", "todo-4"]
+        },
+        "description": "Delete a todo item from the database"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
